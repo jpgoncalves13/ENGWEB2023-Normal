@@ -17,8 +17,48 @@ R: 29617
 R: 5903
 
 3. db.plantas.distinct('Freguesia').sort()
+R: [
+  '',
+  'Abóboda',
+  'Alcab_ideche',
+  'São Domingos de Rana',
+  'U.F. Carcavelos e Parede',
+  'U.F. Cascais e Estoril'
+]
+
 
 4. db.plantas.aggregate([{$group : { _id : "$Freguesia", registos : { $sum : 1 }}}])
+R: 
+[
+  { _id: 'São Domingos de Rana', registos: 5903 },
+  { _id: 'Alcab_ideche', registos: 4034 },
+  { _id: '', registos: 26 },
+  { _id: 'U.F. Carcavelos e Parede', registos: 7629 },
+  { _id: 'Abóboda', registos: 2 },
+  { _id: 'U.F. Cascais e Estoril', registos: 12023 }
+]
 
 5. db.plantas.aggregate([{$group : { _id : "$Espécie", registos : { $sum : 1 }}}])
 
+[
+  { _id: 'mioporum', registos: 59 },
+  { _id: 'medronheiro', registos: 2 },
+  { _id: 'plumeria', registos: 3 },
+  { _id: 'platano bastardo', registos: 707 },
+  { _id: 'Hibisco', registos: 3 },
+  { _id: 'freixo europeu', registos: 43 },
+  { _id: 'aroeira vermelha', registos: 17 },
+  { _id: 'romanzeira', registos: 26 },
+  { _id: 'borracheira', registos: 93 },
+  { _id: 'tilia de folhas pequenas', registos: 115 },
+  { _id: 'tilia', registos: 653 },
+  { _id: 'cameleira', registos: 1 },
+  { _id: 'Biota', registos: 8 },
+  { _id: 'arbusto', registos: 2 },
+  { _id: 'Laranjeira', registos: 25 },
+  { _id: 'acacia', registos: 104 },
+  { _id: 'Buganvilia', registos: 9 },
+  { _id: 'pessegueiro', registos: 26 },
+  { _id: 'bananeira', registos: 2 },
+  { _id: 'ameixoeira de jardim', registos: 1015 }
+]

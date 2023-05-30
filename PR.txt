@@ -1,0 +1,24 @@
+Foram feitas alguma alterações no dataset como por exemplo passar o '_id' para String, mas tambem a mudança de nomes que contêm espaços
+para nomes sem espaços.
+
+Para realizar a persistência dos dados, o dataSet foi posto numa base de dados em mongoDB utilizando o docker.
+
+Para executar a API de dados, primeiramente é necessário fazer o setup do MongoDB antes de começar, verificar se a Base de Dados se encontra no mongo, e só
+depois será possível rodar com npm start.
+
+Para executar a interface é necessário que a API de dados já esteja a rodar e só depois será possível rodar a interface também com o npm start.
+
+Queries
+
+1. db.plantas.find({}).count()
+R: 29617
+
+2. db.plantas.find({"Freguesia": "São Domingos de Rana"}).count()
+R: 5903
+
+3. db.plantas.distinct('Freguesia').sort()
+
+4. db.plantas.aggregate([{$group : { _id : "$Freguesia", registos : { $sum : 1 }}}])
+
+5. db.plantas.aggregate([{$group : { _id : "$Espécie", registos : { $sum : 1 }}}])
+
